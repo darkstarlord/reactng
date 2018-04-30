@@ -1,0 +1,42 @@
+@import './styles/constants.scss';
+@import './styles/mixins.scss';
+@import './styles/fonts.scss';
+@import '../node_modules/normalize-scss/sass/normalize.scss';
+
+*, *:before, *:after {
+    @include box-sizing();
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    @include font-size(16);
+}
+
+h6 {
+    @include font-size(16 * scaledGR(.75));
+}
+
+h5 {
+    @include font-size(16 * scaledGR(1));
+}
+
+h4 {
+    @include font-size(16 * scaledGR(1.25));
+}
+
+h3 {
+    @include font-size(16 * scaledGR(1.5));
+}
+
+h2 {
+    @include font-size(16 * scaledGR(1.75));
+}
+
+h1 {
+    @include font-size(16 * scaledGR(2));
+}
