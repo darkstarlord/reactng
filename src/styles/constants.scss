@@ -1,0 +1,4 @@
+@import './math.scss';
+
+$golden-ratio: (1 + sqrt(5)) / 2;
+$inverse-golden-ratio: 1 / $golden-ratio;

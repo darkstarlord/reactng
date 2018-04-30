@@ -1,0 +1,27 @@
+@import './constants.scss';
+@import './math.scss';
+
+@function scaledGR($factor) {
+    @return $golden-ratio * $factor;
+}
+
+@function scaledIGR($factor) {
+    @return 1 / scaledGR($factor);
+}
+
+@mixin font-size($px) {
+    $rem: $px / 10;
+    $lh_px: $px * (1 + scaledIGR(1));
+    $lh_rem: $lh_px / 10;
+    
+    font-size: #{$px}px!important;
+    font-size: #{$rem}rem!important;
+    line-height: #{$lh_px}px!important;
+    line-height: #{$lh_rem}rem!important;
+}
+
+@mixin box-sizing($sizing: border-box) {
+    box-sizing: $sizing!important;
+    -moz-box-sizing: $sizing!important;
+    -webkit-box-sizing: $sizing!important;
+}
