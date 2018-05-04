@@ -6,6 +6,7 @@ import { routes } from './app.router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
+import { ErrorDetailComponent } from './components/error-detail/error-detail.component';
 
 const appRoutes: Route[] = [];
 
@@ -13,7 +14,8 @@ const appRoutes: Route[] = [];
   declarations: [
     AppComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
+    ErrorDetailComponent
   ],
   imports: [
     BrowserModule,
