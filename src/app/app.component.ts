@@ -15,28 +15,33 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'app';
+  appTitle = '{Title}';
   helloComponent: HelloComponent;
 
   constructor(
     private router: Router, 
     private activatedRoute: ActivatedRoute, 
-    private titleService: Title) { }
+    private title: Title) { }
 
   ngOnInit() {
-    this.router.events
-      .filter((event) => event instanceof NavigationEnd)
-      .map(() => this.activatedRoute)
-      .map((route) => {
-        while (route.firstChild) route = route.firstChild;
-        return route;
-      })
-      .filter((route) => route.outlet === 'primary')
-      .mergeMap((route) => route.data)
-      .subscribe((event) => this.titleService.setTitle(event['title']));
+    this.setTitle();
 
     this.helloComponent = ReactDOM.render(
       React.createElement(HelloComponent), 
       document.getElementById('hello'));
+  }
+
+  private setTitle() {
+    this.router.events
+      .filter((event) => event instanceof NavigationEnd)
+      .map(() => this.activatedRoute)
+      .map((route) => {
+        while (route.firstChild)
+          route = route.firstChild;
+        return route;
+      })
+      .filter((route) => route.outlet === 'primary')
+      .mergeMap((route) => route.data)
+      .subscribe((event) => this.title.setTitle(this.appTitle + ' | ' + event['title']));
   }
 }
